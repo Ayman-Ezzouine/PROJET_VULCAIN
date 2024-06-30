@@ -48,10 +48,18 @@ Assurez-vous d'avoir PostgreSQL installé. Ensuite, suivez les étapes pour inst
 
 ### Étape 4: Configurer les variables d'environnement
 
-Créez un fichier `.env` à la racine de votre projet et ajoutez-y votre clé **OpenAI** qui servira au scoring de promptfoo :
+ajoutez votre clé **OpenAI** qui servira au scoring de promptfoo :
 
-```env
-OPENAI_API_KEY=your_openai_api_key
+```powershell
+$env:OPENAI_API_KEY = "Votre-Cle-OPENAI"
+```
+### Étape 5: Choisir la base de données vectorielles
+
+Dans le fichier 'query_data' recherchez la variable "db" et commentez là en fonction de quelle BDD vous souhaitez utiliser :
+
+```python
+db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
+# dbvector = PGVector(connection_string=CONNECTION_STRING, embedding_function=embedding_function,collection_name=COLLECTION_NAME )
 ```
 
 ## Utilisation
