@@ -1,0 +1,26 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: 'My eval'
+
+prompts: ['{{ query }}']
+
+providers: ['python:RAG\query_data.py']
+
+tests:
+  - vars:
+      query: "quelles sont les sept exigences essentielles publiés par la Commission ? "
+      context: file://./RAG/load_context.py
+    assert:
+      - type: factuality
+        value: les septs exigences sont acteur humain et contrôle humain, robustesse technique et sécurité,respect de la vie privée et gouvernance des données, transparence, diversité, non-discrimination et équité, bien-être sociétal et environnemental, et responsabilisation.
+      - type: answer-relevance
+        threshold: 0.6
+  - vars:
+      query: "Quelles sont les risques pour la sécurité et le bon fonctionnement du régime de responsabilité ? "
+      context: file://./RAG/load_context.py
+    assert:
+      - type: factuality
+        value: Les  technologies  de  l'IA  peuvent  présenter  de  nouveaux  risques  pour  la  sécurité  des  utilisateurs lorsqu’elles sont intégrées dans des produits et des services. Par exemple, à la suite d’une faille dans la technologie de reconnaissance des objets, une voiture autonome peut se tromper en identifiant un objet sur  la  route  et  causer  un  accident  entraînant  des  lésions  corporelles  et  des  dommages  matériels
+      - type: answer-relevance
+        threshold: 0.6
+        
+  
