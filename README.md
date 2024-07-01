@@ -27,7 +27,7 @@ cd votre-repo
 Installez les dépendances requises en utilisant `pip` :
 
 ```bash
-pip install -r requirements.txt
+pip install -r RAG/requirements.txt
 ```
 
 ### Étape 3: Configurer PostgreSQL avec PG Vector
